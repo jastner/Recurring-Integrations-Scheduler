@@ -147,6 +147,20 @@ namespace RecurringIntegrationsScheduler.Common.Contracts
         public const string ReverseOrder = "ReverseOrder";
         #endregion
 
+        //JAS
+        public const string SycReadsoftActivate = "SycReadsoftActivate";
+
+        public const string SycReadsoftXSLTHeaderDir = "SycReadsoftXSLTHeaderDir";
+
+        public const string SycReadsoftXSLTLineDir = "SycReadsoftXSLTLineDir";
+
+        public const string SycReadsoftXSLTAttachmentDir = "SycReadsoftXSLTAttachmentDir";
+
+        public const string SycReadsoftManifestXMLFileName = "SycReadsoftManifestXMLFileName";
+
+        public const string SycReadsoftPackageXMLFileName = "SycReadsoftPackageXMLFileName";
+        //JAS
+
         #region Processing Job settings
         /// <summary>
         /// Processing success folder

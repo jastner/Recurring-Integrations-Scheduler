@@ -143,6 +143,15 @@ namespace RecurringIntegrationsScheduler.Common.JobSettings
             }
 
             ReverseOrder = Convert.ToBoolean(dataMap.GetString(SettingsConstants.ReverseOrder));
+
+            //JAS
+            SycReadsoftActivate = Convert.ToBoolean(dataMap.GetString(SettingsConstants.SycReadsoftActivate));
+            SycReadsoftXSLTHeaderDir = dataMap.GetString(SettingsConstants.SycReadsoftXSLTHeaderDir);
+            SycReadsoftXSLTLineDir = dataMap.GetString(SettingsConstants.SycReadsoftXSLTLineDir);
+            SycReadsoftXSLTAttachmentDir = dataMap.GetString(SettingsConstants.SycReadsoftXSLTAttachmentDir);
+            SycReadsoftManifestXMLFileName = dataMap.GetString(SettingsConstants.SycReadsoftManifestXMLFileName);
+            SycReadsoftPackageXMLFileName = dataMap.GetString(SettingsConstants.SycReadsoftPackageXMLFileName);
+            //JAS
         }
 
         #region Members
@@ -243,6 +252,17 @@ namespace RecurringIntegrationsScheduler.Common.JobSettings
         /// </value>
         public bool ReverseOrder { get; private set; }
 
+        public bool SycReadsoftActivate { get; private set; }
+
+        public string SycReadsoftXSLTHeaderDir { get; private set; }
+
+        public string SycReadsoftXSLTLineDir { get; private set; }
+
+        public string SycReadsoftXSLTAttachmentDir { get; private set; }
+
+        public string SycReadsoftManifestXMLFileName { get; private set; }
+
+        public string SycReadsoftPackageXMLFileName { get; private set; }
         #endregion
     }
 }

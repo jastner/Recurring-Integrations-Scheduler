@@ -113,6 +113,28 @@ namespace RecurringIntegrationsScheduler.Forms
                 dataPackageCheckBox.Checked = (UploadJobDetail.JobDataMap[SettingsConstants.IsDataPackage] != null) &&
                                               Convert.ToBoolean(
                                                   UploadJobDetail.JobDataMap[SettingsConstants.IsDataPackage].ToString());
+
+                //JAS
+                sycReadsoftActivateCheckBox.Checked = (UploadJobDetail.JobDataMap[SettingsConstants.SycReadsoftActivate] != null) &&
+                                              Convert.ToBoolean(
+                                                  UploadJobDetail.JobDataMap[SettingsConstants.SycReadsoftActivate].ToString());
+
+                sycXSLTHeaderFolderTextBox.Text = UploadJobDetail.JobDataMap[SettingsConstants.SycReadsoftXSLTHeaderDir]?.ToString() ??
+                                          string.Empty;
+
+                sycXSLTLineFolderTextBox.Text = UploadJobDetail.JobDataMap[SettingsConstants.SycReadsoftXSLTLineDir]?.ToString() ??
+                                          string.Empty;
+
+                sycXSLTAttachmentFolderTextBox.Text = UploadJobDetail.JobDataMap[SettingsConstants.SycReadsoftXSLTAttachmentDir]?.ToString() ??
+                                          string.Empty;
+
+                sycManifestXMLFileName.Text = UploadJobDetail.JobDataMap[SettingsConstants.SycReadsoftManifestXMLFileName]?.ToString() ??
+                                          string.Empty;
+
+                sycPackageFileName.Text = UploadJobDetail.JobDataMap[SettingsConstants.SycReadsoftPackageXMLFileName]?.ToString() ??
+                                          string.Empty;
+                //JAS
+
                 statusFileExtensionTextBox.Text =
                     UploadJobDetail.JobDataMap[SettingsConstants.StatusFileExtension]?.ToString() ?? ".Status";
                 serviceAuthRadioButton.Checked =
@@ -563,6 +585,15 @@ namespace RecurringIntegrationsScheduler.Forms
                 {SettingsConstants.SearchPattern, searchPatternTextBox.Text},
                 {SettingsConstants.OrderBy, orderByComboBox.SelectedItem.ToString()},
                 {SettingsConstants.ReverseOrder, orderDescendingRadioButton.Checked.ToString()}
+                //JAS
+                ,
+                {SettingsConstants.SycReadsoftActivate, sycReadsoftActivateCheckBox.Checked.ToString()},
+                {SettingsConstants.SycReadsoftXSLTHeaderDir, sycXSLTHeaderFolderTextBox.Text},
+                {SettingsConstants.SycReadsoftXSLTLineDir, sycXSLTLineFolderTextBox.Text},
+                {SettingsConstants.SycReadsoftXSLTAttachmentDir, sycXSLTAttachmentFolderTextBox.Text},
+                {SettingsConstants.SycReadsoftManifestXMLFileName, sycManifestXMLFileName.Text},
+                {SettingsConstants.SycReadsoftPackageXMLFileName, sycPackageFileName.Text}
+                //JAS
             };
             if (serviceAuthRadioButton.Checked)
             {
@@ -778,6 +809,36 @@ namespace RecurringIntegrationsScheduler.Forms
             aadApplicationComboBox.DisplayMember = Resources.Name;
 
             userComboBox.Enabled = !serviceAuthRadioButton.Checked;
+        }
+
+        private void SycXSLTFolderButton_Click(object sender, EventArgs e)
+        {
+            if (sycFileDialog.ShowDialog() == DialogResult.OK)
+                sycXSLTHeaderFolderTextBox.Text = sycFileDialog.FileName;
+        }
+
+        private void SycXSLTLineFolderButton_Click(object sender, EventArgs e)
+        {
+            if (sycFileDialog.ShowDialog() == DialogResult.OK)
+                sycXSLTLineFolderTextBox.Text = sycFileDialog.FileName;
+        }
+
+        private void SycXSLTAttachmentFolderButton_Click(object sender, EventArgs e)
+        {
+            if (sycFileDialog.ShowDialog() == DialogResult.OK)
+                sycXSLTAttachmentFolderTextBox.Text = sycFileDialog.FileName;
+        }
+
+        private void sycPackageXMLButton_Click(object sender, EventArgs e)
+        {
+            if (sycFileDialog.ShowDialog() == DialogResult.OK)
+                sycPackageFileName.Text = sycFileDialog.FileName;
+        }
+
+        private void sycManifestXMLButton_Click(object sender, EventArgs e)
+        {
+            if (sycFileDialog.ShowDialog() == DialogResult.OK)
+                sycManifestXMLFileName.Text = sycFileDialog.FileName;
         }
     }
 }

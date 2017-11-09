@@ -145,6 +145,20 @@ namespace RecurringIntegrationsScheduler.Job
                             firstFile = false;
                         }
 
+                        //JAS
+                        if (_settings.SycReadsoftActivate)
+                        {
+                            dataMessage = VendorInvoice_PackageCreation.PackageCreation.xmlTransformation(
+                                dataMessage,
+                                _settings.UploadSuccessDir,
+                                _settings.SycReadsoftXSLTHeaderDir,
+                                _settings.SycReadsoftXSLTLineDir,
+                                _settings.SycReadsoftXSLTAttachmentDir,
+                                _settings.SycReadsoftManifestXMLFileName,
+                                _settings.SycReadsoftPackageXMLFileName);
+                        }
+                        //JAS
+
                         var sourceStream = FileOperationsHelper.Read(dataMessage.FullPath);
                         if (sourceStream == null) continue;//Nothing to do here
 
