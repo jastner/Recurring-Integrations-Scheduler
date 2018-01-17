@@ -111,6 +111,8 @@ namespace RecurringIntegrationsScheduler.Job
             {
                 Log.DebugFormat(CultureInfo.InvariantCulture, string.Format(Resources.Job_0_File_1_found_in_input_location, _context.JobDetail.Key, dataMessage.FullPath.Replace(@"{", @"{{").Replace(@"}", @"}}")));
                 InputQueue.Enqueue(dataMessage);
+                //TODO: Only process one file in one run - remove after D365 bug is fixed
+                break;
             }
 
             if (!InputQueue.IsEmpty)
